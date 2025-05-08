@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FizzBuzz判定</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .fizz {
+            background-color: #ffecb3;
+        }
+        .buzz {
+            background-color: #bbdefb;
+        }
+        .fizzbuzz {
+            background-color: #c8e6c9;
+        }
+        .number {
+            background-color: #e1bee7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FizzBuzz判定</h1>
+        <div class="input-group">
+            <label for="number">数字を入力してください:</label>
+            <input type="number" id="number" min="1" placeholder="例: 15">
+        </div>
+        <button onclick="checkFizzBuzz()">判定する</button>
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        function checkFizzBuzz() {
+            // 入力値を取得
+            const numberInput = document.getElementById('number');
+            const resultDiv = document.getElementById('result');
+            
+            // 入力値をチェック
+            const number = parseInt(numberInput.value);
+            
+            if (isNaN(number) || number <= 0) {
+                alert('正の整数を入力してください');
+                return;
+            }
+            
+            // FizzBuzz判定
+            let result = '';
+            let className = '';
+            
+            if (number % 3 === 0 && number % 5 === 0) {
+                result = 'FizzBuzz';
+                className = 'fizzbuzz';
+            } else if (number % 3 === 0) {
+                result = 'Fizz';
+                className = 'fizz';
+            } else if (number % 5 === 0) {
+                result = 'Buzz';
+                className = 'buzz';
+            } else {
+                result = number.toString();
+                className = 'number';
+            }
+            
+            // 結果を表示
+            resultDiv.textContent = result;
+            resultDiv.className = 'result ' + className;
+            resultDiv.style.display = 'block';
+        }
+        
+        // Enterキーでも判定できるようにする
+        document.getElementById('number').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkFizzBuzz();
+            }
+        });
+    </script>
+</body>
+</html>

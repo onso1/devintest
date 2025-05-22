@@ -68,6 +68,9 @@
         .number {
             background-color: #e1bee7;
         }
+        .hoge {
+            background-color: #ffcc80;
+        }
     </style>
 </head>
 <body>
@@ -102,6 +105,9 @@
             if (number % 3 === 0 && number % 5 === 0) {
                 result = 'FizzBuzz';
                 className = 'fizzbuzz';
+            } else if (number % 6 === 0) {
+                result = 'Hoge';
+                className = 'hoge';
             } else if (number % 3 === 0) {
                 result = 'Fizz';
                 className = 'fizz';
